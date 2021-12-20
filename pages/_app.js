@@ -6,6 +6,9 @@ import createEmotionCache from '../styles/createEmotionCache';
 
 import '../styles/global.css';
 import theme from '../styles/theme';
+import BlogHeader from '../components/BlogHeader';
+import Layout from '../components/Layout';
+import '../styles/prism.css';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -19,7 +22,11 @@ export default function App(props) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <BlogHeader />
+
+        <Component {...pageProps}>
+          <Layout title={pageProps.title}>{pageProps.children}</Layout>
+        </Component>
       </ThemeProvider>
     </CacheProvider>
   );
